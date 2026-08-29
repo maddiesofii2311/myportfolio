@@ -1,0 +1,326 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oficar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'trabproject28335/style/funcionario.css' %}">
+    <style>
+        #searchMatricula {
+            background-color: #2c2c2c !important;
+            color: #fff !important;
+            border: none !important;
+            outline: none !important;
+        }
+        #searchMatricula::placeholder {
+            color: #fff !important;
+        }
+        #searchMatricula:focus {
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: #2c2c2c !important;
+        }
+        .search-matricula-input:focus {
+            outline: none; 
+            box-shadow: none; 
+            background-color: #2c2c2c;
+        }
+        .search-matricula-input:-webkit-autofill,
+        .search-matricula-input:-webkit-autofill:hover, 
+        .search-matricula-input:-webkit-autofill:focus {
+            -webkit-text-fill-color: #fff;
+            -webkit-box-shadow: 0 0 0px 1000px #2c2c2c inset;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+        .btn-adicionar-veiculo {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            height: 50px;
+            padding: 10px 15px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-adicionar-veiculo:hover {
+            background-color: #555;
+        }
+        .btn-adicionar-veiculo i {
+            font-size: 1.1rem;
+        }
+        .modal-overlay {
+            display: none; 
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        /* O estado visível (ativado pelo JS) */
+        .modal-overlay.show {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+    
+    <div class="sidebar-wrapper bg-dark text-white p-0" id="sidebar-wrapper">
+        <div class="sidebar-heading p-3 d-flex justify-content-center">
+            <img src="{% static 'trabproject28335/images/oficar.png' %}" alt="Logo Oficar" class="logo-small">
+        </div>
+        
+        <div class="list-group list-group-flush mt-3">
+    
+            <a href="{% url 'dashboardAdmGes' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-grid-fill"></i> Dashboard 
+                </div>
+            </a>
+            
+            <a href="{% url 'clientes' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-person-fill"></i> Clientes 
+                </div>
+            </a>
+            
+            <a href="{% url 'veiculos' %}" class="list-group-item list-group-item-action sidebar-item sidebar-active">
+                <div class="menu-content-wrapper">
+                    <i class="fas fa-car"></i> Veículos 
+                </div>
+            </a>
+
+            <a href="{% url 'funcionarios' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-people-fill"></i> Funcionários
+                </div>
+            </a>
+
+            <a href="{% url 'pecas' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-wrench-adjustable"></i> Peças
+                </div>
+            </a>
+
+            <a href="{% url 'servicos' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-file-check-fill"></i> Serviços
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <div id="page-content-wrapper">
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom py-3">
+            <div class="container-fluid">
+                <h1 class="dashboard-title mb-0">Veículos</h1>
+                
+                <div class="welcome-user d-flex align-items-center position-relative">
+                    <span class="me-3">Bem vindo, <strong>{{ request.session.nome }}</strong></span>
+                    <i class="fas fa-user-circle user-icon" id="userIcon"></i>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="{% url 'logout' %}" class="user-dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid py-4 main-content main-content-funcionario">
+            
+            <div class="d-flex justify-content-center mb-4 gap-5 buttons-offset-right">
+                <a href="{% url 'addVeiculos' %}" class="btn-adicionar-os" style="text-decoration: none; height: 50px; display: inline-flex; align-items: center; padding-top: 0; padding-bottom: 0;">
+                    <i class="bi bi-plus-lg"></i> Adicionar Veículo
+                </a>
+                <div class="search-matricula-wrapper" style="margin-bottom: 30px; display: flex; justify-content: center;">
+                    <form method="get" action="{% url 'veiculos' %}" class="search-matricula-container" style="position: relative; width: 100%; max-width: 300px; background-color: #2c2c2c; border-radius: 30px; display: flex; align-items: center; padding-right: 15px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);">
+                        <input 
+                            type="text"
+                            name="search" 
+                            class="search-matricula-input" 
+                            placeholder="Matrícula"
+                            value="{{ request.GET.search }}"
+                            id="searchMatricula"
+                            style="width: 100%; padding: 12px 20px; border: none; border-radius: 30px; font-size: 1rem; color: #fff; background-color: #2c2c2c;"
+                        >
+                        <button type="submit" style="background: none; border: none; cursor: pointer;">
+                            <i class="fas fa-search search-matricula-icon" style="color: #fff; font-size: 1rem; flex-shrink: 0; margin-left: 10px;"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="table-section-minhasOS">
+                <div class="table-responsive-minhasOS">
+                    <table class="table os-table-funcionario">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ID Cliente</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Ano</th>
+                                <th>Matricula</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for veiculo in veiculos %}
+                            <tr>
+                                <td>{{ veiculo.veiculo_id }}</td>
+                                <td>{{ veiculo.cliente }}</td>
+                                <td>{{ veiculo.marca }}</td>
+                                <td>{{ veiculo.modelo }}</td>
+                                <td>{{ veiculo.ano }}</td>
+                                <td>{{ veiculo.matricula }}</td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="7" class="text-center">Ainda não tens Veículos registados.</td>
+                            </tr>
+                            {% endfor %}
+                            <!--
+                            <tr>
+                                <td>2</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'trabproject28335/js/veiculos.js' %}"></script>
+<script src="{% static 'trabproject28335/js/dashboard.js' %}"></script>
+
+<!-- Modal de Edição -->
+<div class="modal-overlay" id="modalEditar">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Editar Veículo</h3>
+            <button class="modal-close" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="formEditar" method="post" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="editID">ID</label>
+                    <input type="text" id="editID" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="editCliente">ID Cliente</label>
+                    <input type="text" name="cliente" id="editCliente" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="editMarca">Marca</label>
+                    <input type="text" name="marca" id="editMarca" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="editModelo">Modelo</label>
+                    <input type="text" name="modelo" id="editModelo" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="editAno">Ano</label>
+                    <input type="text" name="ano" id="editAno" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="editMatricula">Matrícula</label>
+                    <input type="text" name="matricula" id="editMatricula" class="form-control">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn-modal-gravar" id="btnGravar">Gravar</button>
+            <button type="submit" class="btn-modal-remover" id="btnRemover">Remover</button>
+            <button type="submit" class="btn-modal-cancelar" id="btnCancelar">Cancelar</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

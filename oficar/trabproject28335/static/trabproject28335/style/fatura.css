@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.fatura {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* HEADER */
+.header-section {
+    background: #000;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centraliza horizontalmente */
+    margin-right: 80px;   /* Empurra mais para a direita */
+}
+
+.logo {
+    width: 160px;
+    height: auto;
+    display: block;
+    margin-bottom: 12px;  /* Espaço entre logo e texto */
+}
+
+.contact-details {
+    color: #ccc;
+    font-size: 9px;
+    line-height: 1.5;
+    margin: 0;
+    text-align: center;  /* Centraliza o texto */
+}
+
+.fatura-box {
+    background: #2d2d2d;
+    padding: 15px 60px;
+    text-align: center;
+    border-radius: 3px;
+    margin-left: 10px;  /* Empurra mais para a esquerda */
+}
+
+.fatura-box h1 {
+    color: #FFD700;
+    font-size: 26px;
+    /*margin: 0 0 8px 0;*/
+    margin: 0 -15px 8px -15px;
+    letter-spacing: 3px;
+    padding-bottom: 8px;           /* Adiciona espaço abaixo do título */
+    border-bottom: 2px solid #FFD700;
+}
+
+.fatura-box p {
+    color: white;
+    font-size: 14px;
+    margin: 3px 0;
+}
+
+.fatura-box p:first-of-type {
+    margin-top: 8px;  /* Espaço acima do primeiro parágrafo */
+}
+
+/* INFO SECTION */
+.info-section {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+}
+
+.info-card {
+    flex: 1;
+    border: 2px solid #FFD700;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.card-header {
+    background: #FFD700;
+    color: #000;
+    padding: 8px 10px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.card-body {
+    padding: 12px;
+    background: #fafafa;
+}
+
+.card-body p {
+    font-size: 11px;
+    margin: 4px 0;
+    line-height: 1.5;
+}
+
+.card-body strong {
+    font-size: 12px;
+}
+
+/* TABLES */
+.table-header {
+    background: #1a1a1a;
+    color: #FFD700;
+    padding: 8px 20px;
+    margin: 15px 20px 0 20px;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.service-table {
+    width: calc(100% - 40px);
+    margin: 0 20px 15px 20px;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+
+.service-table thead {
+    background: #FFD700;
+}
+
+.service-table th {
+    padding: 8px;
+    font-weight: bold;
+    color: #000;
+    text-align: left;
+    font-size: 11px;
+}
+
+.service-table td {
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.service-table tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.desc-col {
+    width: 50%;
+}
+
+.qtd-col {
+    width: 10%;
+    text-align: center;
+}
+
+.price-col {
+    width: 20%;
+    text-align: right;
+}
+
+.total-col {
+    width: 20%;
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+/* BOTTOM SECTION */
+.bottom-section {
+    display: flex;
+    gap: 15px;
+    padding: 0 20px 20px 20px;
+}
+
+.payment-box {
+    flex: 1;
+    border: 2px solid #FFD700;
+    border-radius: 4px;
+    padding: 12px;
+    background: #fffef5;
+}
+
+.payment-box h3 {
+    font-size: 12px;
+    margin: 0 0 10px 0;
+    color: #000;
+}
+
+.payment-box p {
+    font-size: 11px;
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+.total-section {
+    flex: 1;
+    background: #e8e8e8;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.subtotal-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.total-final {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 2px solid #999;
+}
+
+.total-final span:first-child {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.total-amount {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* SIGNATURE */
+.signature-area {
+    text-align: center;
+    padding: 30px;
+    color: #999;
+    font-size: 11px;
+    border-top: 1px dashed #ccc;
+    margin: 0 20px;
+    margin-top: 80px;
+}
+
+/* FOOTER */
+.footer {
+    background: #000;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 11px;
+}

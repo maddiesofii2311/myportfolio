@@ -1,0 +1,657 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    background-color: #ffffff;
+}
+
+/* --- LAYOUT GERAL DO DASHBOARD --- */
+
+#wrapper {
+    overflow-x: hidden;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-left: 300px;
+    background-color: #ffffff;
+}
+
+/* --- 1. BARRA LATERAL (SIDEBAR) --- */
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 300px;
+    background-color: #000 !important;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    position: fixed; 
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo na Sidebar */
+.sidebar-heading {
+    padding: 15px 10px;
+}
+.logo-small {
+    max-width: 80%;
+    height: auto;
+    transform: translateX(-5px);
+}
+
+/* Itens de Menu */
+.list-group-flush .list-group-item {
+    border: none;
+    border-radius: 10px 0 0 10px;
+}
+
+.sidebar-item {
+    padding: 16px 25px;
+    font-size: 1.2rem; 
+    font-weight: 500;
+    color: #fff !important; 
+    background-color: #000 !important;
+    border-radius: 0;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    transform: translateX(50px);
+    width: calc(100% - 50px);
+}
+
+.sidebar-item:hover {
+    background-color: #333 !important;
+    color: #fff !important;
+    border-radius: 10px 0 0 10px;
+}
+
+.sidebar-item .menu-content-wrapper {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    transform: translateX(30px);
+}
+
+/* Container do Conteúdo do Menu */
+.menu-content-wrapper {
+    display: flex;
+    align-items: center;
+    transform: translateX(80px);
+}
+
+/* Ícones */
+.sidebar-item i {
+    margin-right: 12px !important;
+    margin-left: 0 !important;
+    font-size: 1.5rem;
+    vertical-align: middle;
+}
+
+/* --- ITEM ATIVO (DASHBOARD) --- */
+
+.sidebar-active {
+    background-color: #ffcc00 !important;
+    color: #000 !important;
+    font-weight: 600;
+    border-radius: 10px 0 0 10px;
+    margin: 0;
+    padding: 16px 25px;
+    position: relative;
+    transform: translateX(50px);
+    width: calc(100% - 50px);
+}
+
+.sidebar-active:hover {
+    background-color: #ffcc00 !important;
+    color: #000 !important;
+}
+
+.sidebar-active .menu-content-wrapper {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    transform: translateX(30px);
+}
+
+.sidebar-active::after {
+    display: none;
+}
+
+.sidebar-active + .sidebar-item::before {
+    display: none;
+}
+
+/* --- 2. CABEÇALHO E TÍTULO --- */
+
+.navbar {
+    background-color: #fafafa !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    padding-left: 70px !important;
+    padding-right: 70px !important;
+}
+
+.dashboard-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #000;
+    text-transform: capitalize;
+    margin-bottom: 40px;
+    position: relative;
+    letter-spacing: 1px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    top: 15px;
+
+    /* Efeito "fuzzy" */
+    text-shadow:
+        0 0 2px #000,
+        0 0 3px #000,
+        1px 1px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    filter: blur(0.3px) contrast(120%);
+}
+
+.welcome-user {
+    transform: translateY(20px) !important;
+}
+
+.user-icon {
+    font-size: 3.0rem;
+    color: #ffcc00; 
+    margin-left: 8px; 
+}
+
+.navbar .me-3 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Dropdown do user */
+.welcome-user {
+    position: relative;
+}
+
+.user-icon {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.user-icon:hover {
+    color: #e6b800;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 8px;
+    min-width: 150px;
+    display: none;
+    z-index: 1000;
+}
+
+.user-dropdown.show {
+    display: block;
+}
+
+.user-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    font-size: 0.9rem;
+}
+
+.user-dropdown-item:hover {
+    background-color: #f5f5f5;
+    color: #000;
+}
+
+.user-dropdown-item i {
+    font-size: 1rem;
+}
+
+/* --- 3. ÁREA PRINCIPAL DE CONTEÚDO --- */
+
+.main-content {
+    background-color: #fafafa;
+    padding: 30px 70px !important;
+    min-height: calc(100vh - 80px);
+}
+
+/* Link dos cards clicáveis */
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s;
+    height: 100%;
+}
+
+.card-link:hover {
+    transform: translateY(-3px);
+}
+
+.card-link:hover .icon-card {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* CARDS */
+.status-card {
+    background-color: #e8e8e8;
+    border-radius: 18px;
+    padding: 22px 18px;
+    box-shadow: none;
+    border: none;
+    margin-top: 40px;
+}
+
+.icon-card {
+    background-color: #e8e8e8;
+    border-radius: 18px;
+    padding: 35px 20px;
+    text-align: center;
+    box-shadow: none;
+    border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+
+.card-title-text {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 25px;
+    margin-top: 0;
+}
+
+.card-subtitle-text {
+    font-size: 0.7rem;
+    color: #000;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Ícone com círculo amarelo */
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #fffaeb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.icon-circle i {
+    font-size: 1.5rem;
+    color: #000;
+}
+
+/* Card de Alertas */
+.alert-card {
+    background-color: #efd68a;
+    border-radius: 18px;
+    padding: 22px 18px;
+    box-shadow: none;
+    border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: 280px;
+}
+
+.alert-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    flex-shrink: 0;
+}
+
+.alert-header i {
+    font-size: 1.2rem;
+    color: #000;
+}
+
+.alert-header span {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.alert-content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px;
+}
+
+.alert-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.alert-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.alert-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.alert-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.alert-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+.alert-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.alert-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.alert-description {
+    font-size: 0.75rem;
+    color: #333;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* GRÁFICO E LEGENDA LADO A LADO */
+.chart-legend-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* GRÁFICO */
+.chart-placeholder {
+    width: 110px;
+    height: 110px;
+    background: conic-gradient(
+        #ffcc00 0% 30%,
+        #404040 30% 58%,
+        #ff9966 58% 100%
+    );
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.chart-placeholder::after {
+    content: '';
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    background-color: #e8e8e8;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* LEGENDA */
+.legend-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.legend-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-dot.orange {
+    background-color: #ff9966;
+}
+
+.legend-dot.black {
+    background-color: #404040;
+}
+
+.legend-dot.yellow {
+    background-color: #ffcc00;
+}
+
+/* --- 5. TABELA --- */
+
+.table-section {
+    margin-top: 40px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+}
+
+/* Search */
+.search-wrapper {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.search-input {
+    width: 200px;
+    padding: 8px 12px 8px 35px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    background-color: #fff;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #ccc;
+}
+
+.search-input::placeholder {
+    color: #aaa;
+}
+
+/* Botão */
+.btn-nova-os {
+    background-color: #ffcc00 !important;
+    color: #000 !important;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-nova-os:hover {
+    background-color: #ffcc00 !important;
+}
+
+/* Container da tabela */
+.table-responsive {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-top: 15px;
+    max-height: calc(100vh - 450px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Tabela */
+.os-table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+.os-table thead {
+    background-color: #fafafa;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.os-table thead th {
+    padding: 14px 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #666;
+    border: none;
+    text-align: left;
+    background-color: #fafafa;
+}
+
+.os-table tbody td {
+    padding: 16px 18px;
+    font-size: 0.85rem;
+    color: #555;
+    border-top: 1px solid #f0f0f0;
+    text-align: left;
+}
+
+.os-table tbody tr {
+    transition: background-color 0.15s;
+}
+
+.os-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Status Badges */
+.badge-status {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    min-width: 90px;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.badge-status:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.badge-status:active {
+    transform: scale(0.98);
+}
+
+.badge-concluida {
+    background-color: #4ade80;
+    color: #166534;
+}
+
+.badge-emcurso {
+    background-color: #fbbf24;
+    color: #78350f;
+}
+
+.badge-pendente {
+    background-color: #f87171;
+    color: #7f1d1d;
+}
+
+/* Dropdown de status */
+.status-dropdown {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 8px;
+    min-width: 120px;
+}
+
+.status-option {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.status-option:hover {
+    background-color: #f5f5f5;
+}
+
+.status-option .badge-status {
+    pointer-events: none;
+    margin: 0;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: -300px; 
+    }
+    #page-content-wrapper {
+        padding-left: 0; 
+    }
+}

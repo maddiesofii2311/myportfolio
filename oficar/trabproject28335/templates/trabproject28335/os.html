@@ -1,0 +1,291 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oficar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'trabproject28335/style/funcionario.css' %}">
+    <style>
+        .btn-adicionar-veiculo {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            height: 50px;
+            padding: 10px 15px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-adicionar-veiculo:hover {
+            background-color: #555;
+        }
+        .btn-adicionar-veiculo i {
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+    
+    <div class="sidebar-wrapper bg-dark text-white p-0" id="sidebar-wrapper">
+        <div class="sidebar-heading p-3 d-flex justify-content-center">
+            <img src="{% static 'trabproject28335/images/oficar.png' %}" alt="Logo Oficar" class="logo-small">
+        </div>
+        
+        <div class="list-group list-group-flush mt-3">
+    
+            <a href="{% url 'dashboardAdmGes' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-grid-fill"></i> Dashboard 
+                </div>
+            </a>
+            
+            <a href="{% url 'clientes' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-person-fill"></i> Clientes 
+                </div>
+            </a>
+            
+            <a href="{% url 'veiculos' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="fas fa-car"></i> Veículos 
+                </div>
+            </a>
+
+            <a href="{% url 'funcionarios' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-people-fill"></i> Funcionários
+                </div>
+            </a>
+
+            <a href="{% url 'pecas' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-wrench-adjustable"></i> Peças
+                </div>
+            </a>
+
+            <a href="{% url 'servicos' %}" class="list-group-item list-group-item-action sidebar-item sidebar-active">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-file-check-fill"></i> Serviços
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <div id="page-content-wrapper">
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom py-3">
+            <div class="container-fluid">
+                <h1 class="dashboard-title mb-0">Ordens de Serviço</h1>
+                
+                <div class="welcome-user d-flex align-items-center position-relative">
+                    <span class="me-3">Bem vindo, <strong>{{ request.session.nome }}</strong></span>
+                    <i class="fas fa-user-circle user-icon" id="userIcon"></i>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="{% url 'logout' %}" class="user-dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid py-4 main-content main-content-funcionario">
+            
+            <div class="d-flex justify-content-center mb-4 gap-5 buttons-offset-right">
+                <a href="{% url 'servicos' %}" class="btn-adicionar-veiculo" style="text-decoration: none;">
+                    <i class="bi bi-arrow-left"></i> Voltar
+                </a>
+                <a href="{% url 'minhasOS' %}" class="btn-adicionar-veiculo" style="text-decoration: none;">
+                    <i class="bi bi-journals"></i> Consultar Minhas OS
+                </a>
+            </div>
+
+            <div class="table-section-minhasOS">
+                <div class="table-responsive-minhasOS">
+                    <table class="table os-table-funcionario">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ID Veículo</th>
+                                <th>ID Funcionário</th>
+                                <th>Data abertura</th>
+                                <th>Data Conclusão</th>
+                                <th>Status</th>
+                                <th>Descrição Problema</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for os in ordensServico %}
+                            <tr>
+                                <td>{{ os.os_id }}</td>
+                                <td>{{ os.veiculo }}</td>
+                                <td>{{ os.funcionario }}</td>
+                                <td>{{ os.data_abertura }}</td>
+                                <td>{{ os.data_conclusao }}</td>
+                                <td>
+                                    {% if os.status == 'Em Curso' or os.status == 'emcurso' %}
+                                        <span class="badge-status badge-emcurso">Em Curso</span>
+                                    {% elif os.status == 'Pendente' %}
+                                        <span class="badge-status badge-pendente">Pendente</span>
+                                    {% elif os.status == 'Concluida' %}
+                                        <span class="badge-status badge-concluida">Concluída</span>
+                                    {% else %}
+                                        <span class="badge-status">{{ os.status }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ os.descricao_problema|truncatechars:30 }}</td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="8" class="text-center">Ainda não tens Ordens de Serviço registados.</td>
+                            </tr>
+                            {% endfor %}
+                            <!--
+                            <tr>
+                                <td>2</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><span class="badge-status badge-concluida">Concluída</span></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><span class="badge-status badge-emcurso">Em Curso</span></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><span class="badge-status badge-pendente">Pendente</span></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><span class="badge-status badge-emcurso">Em Curso</span></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><span class="badge-status badge-emcurso">Em Curso</span></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><span class="badge-status badge-pendente">Pendente</span></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn-acao btn-editar">Editar</button>
+                                </td>
+                            </tr>
+                            -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'trabproject28335/js/os.js' %}"></script>
+<script src="{% static 'trabproject28335/js/dashboard.js' %}"></script>
+
+<!-- Modal de Edição -->
+<div class="modal-overlay" id="modalEditar">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Editar Ordem de Serviço</h3>
+            <button class="modal-close" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="formEditar" method="post" action="">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="editID">ID</label>
+                    <input type="text" id="editID" class="form-control" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="editIDVeiculo">ID Veículo</label>
+                    <input type="text" name="veiculo_id" id="editIDVeiculo" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="editIDFuncionario">ID Funcionário</label>
+                    <input type="text" name="funcionario_id" id="editIDFuncionario" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="editDataAbertura">Data Abertura</label>
+                    <input type="text" name="data_abertura" id="editDataAbertura" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="editDataConclusao">Data Conclusão</label>
+                    <input type="text" name="data_conclusao" id="editDataConclusao" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="editStatus">Status</label>
+                    <select name="status" id="editStatus" class="form-control">
+                        <option value="emcurso">Em Curso</option>
+                        <option value="pendente">Pendente</option>
+                        <option value="concluida">Concluída</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editDescricao">Descrição Problema</label>
+                    <textarea name="descricao_problema" id="editDescricao" class="form-control" rows="3"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-modal-gravar" id="btnGravar">Gravar</button>
+            <button class="btn-modal-remover" id="btnRemover">Remover</button>
+            <button class="btn-modal-cancelar" id="btnCancelar">Cancelar</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

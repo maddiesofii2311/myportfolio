@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oficar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'trabproject28335/style/funcionario.css' %}">
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+    
+    <div class="sidebar-wrapper bg-dark text-white p-0" id="sidebar-wrapper">
+        <div class="sidebar-heading p-3 d-flex justify-content-center">
+            <img src="{% static 'trabproject28335/images/oficar.png' %}" alt="Logo Oficar" class="logo-small">
+        </div>
+        
+        <div class="list-group list-group-flush mt-3">
+    
+            <a href="{% url 'dashboardFuncionario' %}" class="list-group-item list-group-item-action sidebar-item sidebar-active">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-grid-fill"></i> Dashboard 
+                </div>
+            </a>
+            
+            <a href="{% url 'minhasOSFuncionarios' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="far fa-file-alt"></i> Minhas OS 
+                </div>
+            </a>
+            
+            <a href="{% url 'veiculosFuncionarios' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="fas fa-car"></i> Veículos 
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <div id="page-content-wrapper">
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom py-3">
+            <div class="container-fluid">
+                <h1 class="dashboard-title mb-0">Itens de Serviço</h1>
+                
+                <div class="welcome-user d-flex align-items-center position-relative">
+                    <span class="me-3">Bem vindo, <strong>{{ request.session.nome }}</strong></span>
+                    <i class="fas fa-user-circle user-icon" id="userIcon"></i>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="{% url 'logout' %}" class="user-dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid py-4 main-content main-content-funcionario">
+        </br>    
+            <div class="d-flex justify-content-center mb-4 gap-3 buttons-offset-right">
+                <a href="{% url 'dashboardFuncionario' %}" class="btn-adicionar-os" style="text-decoration: none;">
+                    <i class="bi bi-arrow-left"></i> Voltar
+                </a>
+                <a href="{% url 'servicosFuncionario' %}" class="btn-adicionar-os" style="text-decoration: none;">
+                    <i class="bi bi-journals"></i> Consultar Serviços
+                </a>
+            </div>
+
+        </br></br>
+            <div class="form-criar-os-container">
+                <form class="form-criar-os" method="post" action="{% url 'itensServicoFuncionario' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="os_id">ID Ordem de Serviço</label>
+                                <input type="number" name="os_id" class="form-control" id="os_id" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="preco_unitario">Preço</label>
+                                <input type="text" name="preco_unitario" class="form-control" id="preco_unitario" placeholder="" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="servico_id">ID Serviço</label>
+                                <input type="number" name="servico_id" class="form-control" id="servico_id" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="subtotal">Subtotal</label>
+                                <input type="text" name="subtotal" class="form-control" id="subtotal" placeholder="" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="quantidade">Quantidade</label>
+                                <input type="number" name="quantidade" class="form-control" id="quantidade" placeholder="" value="1" min="1" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-center mt-4">
+                                <button type="submit" class="btn-adicionar-submit">Submeter</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'trabproject28335/js/itensServicoFuncionario.js' %}"></script>
+<script src="{% static 'trabproject28335/js/minhasOS.js' %}"></script>
+<script src="{% static 'trabproject28335/js/dashboard.js' %}"></script>
+</body>
+</html>

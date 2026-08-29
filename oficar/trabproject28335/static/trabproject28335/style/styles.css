@@ -1,0 +1,154 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* evita qualquer scroll */
+}
+
+/* Container principal dividido */
+.login-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Painel esquerdo */
+.left-panel {
+    flex: 1.2;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 60%;
+    border-bottom-right-radius: 60%;
+    overflow: hidden;
+    transform: scaleY(1.1); /* aumenta ligeiramente a altura */
+    transform-origin: center;
+}
+
+/* Logo */
+.logo-image {
+    max-width: 80%;
+    height: auto;
+    transform: translateX(-40px);
+}
+
+/* Painel direito */
+.right-panel {
+    flex: 1;
+    background-color: #fff;
+}
+
+/* Formulário */
+.login-form {
+    width: 300px;
+    text-align: center;
+}
+
+/* --- TÍTULO "Login" COM EFEITO --- */
+.login-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #000;
+    text-transform: capitalize;
+    margin-bottom: 40px;
+    position: relative;
+    letter-spacing: 1px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+
+    /* Efeito "fuzzy" */
+    text-shadow:
+        0 0 2px #000,
+        0 0 3px #000,
+        1px 1px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    filter: blur(0.3px) contrast(120%);
+}
+
+/* Inputs */
+.form-control {
+    border-radius: 8px;
+    height: 40px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+/* Botão */
+.btn-dark {
+    background-color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-dark:hover {
+    background-color: #ffcc00;
+    color: #000;
+}
+
+/* --- ESTILOS EXCLUSIVOS PARA INDEX --- */
+
+.index-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #000;
+    text-transform: capitalize;
+    white-space: nowrap; /* impede quebra de linha */
+    transform: translateX(-50px);
+    margin-bottom: 40px;
+    position: relative;
+    letter-spacing: 1px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+
+    /* Efeito "fuzzy" */
+    text-shadow:
+        0 0 2px #000,
+        0 0 3px #000,
+        1px 1px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    filter: blur(0.3px) contrast(120%);
+}
+
+.index-btn {
+    /* Cores e Aparência (Forçado por causa do Bootstrap) */
+    background-color: #000 !important; /* Fundo Preto */
+    color: #fff !important; /* Texto Branco */
+    border: none !important; /* Sem Borda */
+    
+    /* Forma e Tamanho */
+    border-radius: 50px !important; 
+    padding: 15px 60px !important; /* Ajusta a largura e altura do botão */
+    font-size: 1.4rem !important; 
+    font-weight: 500;
+    
+    /* Posicionamento */
+    width: auto; /* Ajusta a largura ao conteúdo/padding */
+    display: block; 
+    margin: 30px auto; /* Centraliza e adiciona margem superior/inferior para espaçamento */
+    
+    /* Efeitos */
+    transition: all 0.3s ease; 
+    cursor: pointer; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.index-btn:hover {
+    background-color: #000 !important;
+    color: #fff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}

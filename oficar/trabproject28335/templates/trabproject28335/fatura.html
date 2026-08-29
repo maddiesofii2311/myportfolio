@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OFICAR</title>
+    <link rel="stylesheet" href="{% static 'trabproject28335/style/fatura.css' %}">
+</head>
+<body>
+    <div class="fatura">
+        <!-- Cabeçalho com Logo e Info da Fatura -->
+        <div class="header-section">
+            <div class="logo-area">
+                <img src="{% static 'trabproject28335/images/oficar.png' %}" alt="Oficar Logo" class="logo">
+                <p class="contact-details">Rua das Oficinas, nº 123 - 3000-000 Viseu<br>Tel: +351 232 000 000 - Email: geral@oficar.pt</p>
+            </div>
+            <div class="fatura-box">
+                <h1>FATURA</h1>
+                <p>Nº {{ fatura.fatura_id }}</p>
+                <p>Data: {{ fatura.data_emissao|date:"d/m/Y" }}</p>
+            </div>
+        </div>
+
+        <!-- Cliente e Veículo -->
+        <div class="info-section">
+            <div class="info-card">
+                <div class="card-header">CLIENTE</div>
+                <div class="card-body">
+                    <p><strong>{{ fatura.os.veiculo.cliente.nome }}</strong></p>
+                    <p>NIF: {{ fatura.os.veiculo.cliente.nif }}</p>
+                    <p>{{ fatura.os.veiculo.cliente.morada }}</p>
+                    <p>Email: {{ fatura.os.veiculo.cliente.email }}</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="card-header">VEÍCULO</div>
+                <div class="card-body">
+                    <p><strong>{{ fatura.os.veiculo.marca }} {{ fatura.os.veiculo.modelo }}</strong></p>
+                    <p>Matrícula: {{ fatura.os.veiculo.matricula }}</p>
+                    <p>Ano: {{ fatura.os.veiculo.ano }}</p>
+                    <p>Ordem de Serviço: {{ fatura.os.os_id }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Serviços Prestados -->
+        <div class="table-header">SERVIÇOS PRESTADOS</div>
+        <table class="service-table">
+            <thead>
+                <tr>
+                    <th class="desc-col">Descrição</th>
+                    <th class="qtd-col">Qtd</th>
+                    <th class="price-col">Preço Unit.</th>
+                    <th class="total-col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in fatura.os.itens_servico_set.all %}
+                <tr>
+                    <td>{{ item.servico.nome }}</td>
+                    <td class="center">{{ item.quantidade }}</td>
+                    <td class="right">{{ item.preco_unitario }}</td>
+                    <td class="right">{{ item.subtotal }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4">Nenhum serviço registado.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Peças Utilizadas -->
+        <div class="table-header">PEÇAS UTILIZADAS</div>
+        <table class="service-table">
+            <thead>
+                <tr>
+                    <th class="desc-col">Descrição</th>
+                    <th class="qtd-col">Qtd</th>
+                    <th class="price-col">Preço Unit.</th>
+                    <th class="total-col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in fatura.os.pecas_usadas_set.all %}
+                <tr>
+                    <td>{{ item.peca.nome }}</td>
+                    <td class="center">{{ item.quantidade }}</td>
+                    <td class="right">{{ item.preco_unitario }}</td>
+                    <td class="right">{{ item.subtotal }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4">Nenhuma peça utilizada.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Pagamento e Total -->
+        <div class="bottom-section">
+            <div class="payment-box">
+                <h3>Informações de Pagamento</h3>
+                <p>Forma de Pagamento: {{ fatura.forma_pagamento }}</p>
+                <p>Status: {{ fatura.status_pagamento }}</p>
+            </div>
+            <div class="total-section">
+                <div class="subtotal-line">
+                    <span>Subtotal:</span>
+                    <span>{{ fatura.valor_total }}</span>
+                </div>
+                <div class="total-final">
+                    <span>TOTAL:</span>
+                    <span class="total-amount">{{ fatura.valor_total }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assinatura -->
+        <div class="signature-area">
+            Assinatura e Carimbo
+        </div>
+
+        <!-- Rodapé -->
+        <div class="footer">
+            OFICAR - Zero Avarias | NIF: 500 000 000
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                window.print();
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

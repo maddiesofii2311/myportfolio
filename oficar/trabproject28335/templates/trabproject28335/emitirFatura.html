@@ -1,0 +1,228 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oficar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'trabproject28335/style/funcionario.css' %}">
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+    
+    <div class="sidebar-wrapper bg-dark text-white p-0" id="sidebar-wrapper">
+        <div class="sidebar-heading p-3 d-flex justify-content-center">
+            <img src="{% static 'trabproject28335/images/oficar.png' %}" alt="Logo Oficar" class="logo-small">
+        </div>
+        
+        <div class="list-group list-group-flush mt-3">
+    
+            <a href="{% url 'dashboardAdmGes' %}" class="list-group-item list-group-item-action sidebar-item sidebar-active">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-grid-fill"></i> Dashboard 
+                </div>
+            </a>
+            
+            <a href="{% url 'clientes' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-person-fill"></i> Clientes 
+                </div>
+            </a>
+            
+            <a href="{% url 'veiculos' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="fas fa-car"></i> Veículos 
+                </div>
+            </a>
+
+            <a href="{% url 'funcionarios' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-people-fill"></i> Funcionários
+                </div>
+            </a>
+
+            <a href="{% url 'pecas' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-wrench-adjustable"></i> Peças
+                </div>
+            </a>
+
+            <a href="{% url 'servicos' %}" class="list-group-item list-group-item-action sidebar-item">
+                <div class="menu-content-wrapper">
+                    <i class="bi bi-file-check-fill"></i> Serviços
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <div id="page-content-wrapper">
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom py-3">
+            <div class="container-fluid">
+                {% csrf_token %}
+                <h1 class="dashboard-title mb-0">Emitir Fatura</h1>
+                
+                <div class="welcome-user d-flex align-items-center position-relative">
+                    <span class="me-3">Bem vindo, <strong>{{ request.session.nome }}</strong></span>
+                    <i class="fas fa-user-circle user-icon" id="userIcon"></i>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="{% url 'logout' %}" class="user-dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid py-4 main-content main-content-funcionario">
+
+        <div style="max-width: 1300px; margin: 0 auto; padding: 20px;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="width: 55%; vertical-align: top; padding-right: 40px;">
+                        <!-- Dados da Ordem de Serviço -->
+                        <div style="margin-bottom: 35px;">
+                            <h2 style="font-size: 1.6rem; font-weight: 600; color: #000; margin-bottom: 18px; font-family: 'Poppins', sans-serif;">Dados da Ordem de Serviço</h2>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #000; margin-bottom: 8px; font-family: 'Poppins', sans-serif;">Ordem de Serviço</label>
+                                <input type="text" id="inputOS" name="os_id" placeholder="Escreva o ID da OS..." style="width: 100%; padding: 11px 14px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.9rem; color: #666; background-color: #fff; font-family: 'Poppins', sans-serif;">
+                            </div>
+
+                            <div style="margin-top: 22px;">
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <tr>
+                                        <td style="width: 50%; padding-right: 10px; vertical-align: top;">
+                                            <div style="background-color: #fffaeb; border: 2px solid #ffcc00; border-radius: 8px; padding: 15px; min-height: 120px;">
+                                                <div style="margin-bottom: 3px;">
+                                                    <span style="font-weight: 600; color: #000; font-family: 'Poppins', sans-serif; font-size: 0.9rem;">Cliente:</span>
+                                                </div>
+                                                <div style="margin-bottom: 10px;">
+                                                    <span style="font-weight: 400; color: #000; font-family: 'Poppins', sans-serif; font-size: 0.9rem;" id="clienteNome">---</span>
+                                                </div>
+                                                <div style="margin-bottom: 3px;">
+                                                    <span style="font-weight: 600; color: #000; font-family: 'Poppins', sans-serif; font-size: 0.9rem;">Veículo:</span>
+                                                </div>
+                                                <div>
+                                                    <span style="font-weight: 400; color: #000; font-family: 'Poppins', sans-serif; font-size: 0.9rem;" id="veiculo">---</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="width: 50%; padding-left: 10px; vertical-align: top;">
+                                            <div style="background-color: #fffaeb; border: 2px solid #ffcc00; border-radius: 8px; padding: 15px; min-height: 120px;">
+                                                <div style="margin-bottom: 3px;">
+                                                    <span style="font-weight: 600; color: #000; font-family: 'Poppins', sans-serif; font-size: 0.9rem;">Data Abertura:</span>
+                                                </div>
+                                                <div style="margin-bottom: 10px;">
+                                                    <span style="font-weight: 400; color: #000; font-family: 'Poppins', sans-serif; font-size: 0.9rem;" id="dataAbertura">---</span>
+                                                </div>
+                                                <div style="margin-bottom: 3px;">
+                                                    <span style="font-weight: 600; color: #000; font-family: 'Poppins', sans-serif; font-size: 0.9rem;">Funcionário:</span>
+                                                </div>
+                                                <div>
+                                                    <span style="font-weight: 400; color: #000; font-family: 'Poppins', sans-serif; font-size: 0.9rem;" id="funcionario">---</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Dados de Pagamento -->
+                        <div style="margin-bottom: 30px;">
+                            <h2 style="font-size: 1.6rem; font-weight: 600; color: #000; margin-bottom: 18px; font-family: 'Poppins', sans-serif;">Dados de Pagamento</h2>
+                            
+                            <table style="width: 100%; margin-bottom: 18px;">
+                                <tr>
+                                    <td style="width: 50%; padding-right: 10px;">
+                                        <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #000; margin-bottom: 8px; font-family: 'Poppins', sans-serif;">Forma de Pagamento</label>
+                                        <select id="formaPagamento" style="width: 100%; padding: 11px 14px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.9rem; color: #666; background-color: #fff; font-family: 'Poppins', sans-serif;">
+                                            <option value="">Selecione...</option>
+                                            <option value="multibanco">Multibanco</option>
+                                            <option value="mbway">MB WAY</option>
+                                            <option value="cartao">Cartão</option>
+                                            <option value="dinheiro">Dinheiro</option>
+                                        </select>
+                                    </td>
+                                    <td style="width: 50%; padding-left: 10px;">
+                                        <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #000; margin-bottom: 8px; font-family: 'Poppins', sans-serif;">Status Pagamento</label>
+                                        <select id="statusPagamento" style="width: 100%; padding: 11px 14px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.9rem; color: #666; background-color: #fff; font-family: 'Poppins', sans-serif;">
+                                            <option value="">Selecione...</option>
+                                            <option value="pendente">Pendente</option>
+                                            <option value="pago">Pago</option>
+                                            <option value="cancelado">Cancelado</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div>
+                                <label style="display: block; font-size: 0.9rem; font-weight: 600; color: #000; margin-bottom: 8px; font-family: 'Poppins', sans-serif;">Data de Emissão</label>
+                                <input type="date" id="dataEmissao" style="width: 100%; padding: 11px 14px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.9rem; color: #666; background-color: #fff; font-family: 'Poppins', sans-serif;">
+                            </div>
+                        </div>
+                    </td>
+
+                    <td style="width: 45%; vertical-align: top;">
+                        <!-- Resumo da Fatura -->
+                        <div>
+                            <h2 style="font-size: 1.6rem; font-weight: 600; color: #000; margin-bottom: 22px; font-family: 'Poppins', sans-serif;">Resumo da Fatura</h2>
+
+                            <!-- Serviços -->
+                            <div style="margin-bottom: 14px;">
+                                <div style="background-color: #ffcc00; padding: 9px 16px; font-size: 0.82rem; font-weight: 700; color: #000; font-family: 'Poppins', sans-serif; letter-spacing: 0.3px;">SERVIÇOS</div>
+                                <div id="listaServicos" style="padding: 10px 0;">
+                                    <div style="display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.9rem; color: #000; font-family: 'Poppins', sans-serif;">
+                                        Aguardando serviços...
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Peças -->
+                            <div style="margin-bottom: 14px;">
+                                <div style="background-color: #ffcc00; padding: 9px 16px; font-size: 0.82rem; font-weight: 700; color: #000; font-family: 'Poppins', sans-serif; letter-spacing: 0.3px;">PEÇAS</div>
+                                <div id="listaPecas" style="padding: 10px 0;">
+                                    <div style="display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.9rem; color: #000; font-family: 'Poppins', sans-serif;">
+                                        Aguardando peças...
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Subtotal -->
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; margin-top: 12px; font-size: 0.9rem; font-weight: 400; color: #000; font-family: 'Poppins', sans-serif;">
+                                <span>Subtotal:</span>
+                                <span id="faturaSubtotal">0.00€</span>
+                            </div>
+
+                            <!-- Total -->
+                            <div style="display: flex; justify-content: space-between; padding: 10px 0; margin-top: 6px; font-size: 1.05rem; font-weight: 700; color: #000; font-family: 'Poppins', sans-serif;">
+                                <span>TOTAL:</span>
+                                <span id="faturaTotal">0.00€</span>
+                            </div>
+                            <!-- Botões -->
+                            <div style="text-align: center; margin-top: 50px;">
+                                <a href="{% url 'dashboardAdmGes' %}" onclick="window.history.back()" style="background-color: #000; color: #fff; border: 2px solid #000; border-radius: 6px; padding: 11px 32px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'Poppins', sans-serif; margin-right: 12px; text-decoration: none;">
+                                    <i class="bi bi-arrow-left"></i> Voltar
+                                </a>
+                                <a href="" id="btnEmitirFatura" style="background-color: #ffcc00; color: #000; border: 2px solid #ffcc00; border-radius: 6px; padding: 11px 32px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'Poppins', sans-serif; text-decoration: none;">
+                                    Emitir Fatura
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!--<script src="{% static 'trabproject28335/js/minhasOS.js' %}"></script>-->
+<script src="{% static 'trabproject28335/js/emitirFatura.js' %}"></script>
+</body>
+</html>
