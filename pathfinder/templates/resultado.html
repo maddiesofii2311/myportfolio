@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PathFinder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/resultado.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="iconLogo">🛣️</div>
+      <a href="/" style="text-decoration: none;"><span class="logo-text">PathFinder</span></a>
+      <div class="nav-divider"></div>
+      <a href="/main/" class="nav-back">← Nova Procura</a>
+    </div>
+    <div class="nav-right">
+      <div class="plate-chip" id="plateChip">AB · 12 · CD</div>
+    </div>
+  </nav>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="algo-tag" id="algoTag">✦ Algoritmo A*</div>
+
+      <div class="log-header">
+        <h3>Log de Iterações</h3>
+        <p id="logSubtitle">Porto → Faro · 0 nós expandidos</p>
+      </div>
+
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>CIDADE</th>
+            <th>G(N)</th>
+            <th>H(N)</th>
+          </tr>
+        </thead>
+        <tbody id="logBody"></tbody>
+      </table>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-area">
+
+      <!-- Path breadcrumb -->
+      <div class="path-bar">
+        <div class="breadcrumb" id="breadcrumb"></div>
+        <div class="distance-display">
+          <span class="dist-value" id="distValue">0</span>
+          <span class="dist-unit">km</span>
+          <div class="dist-label">distância total</div>
+        </div>
+      </div>
+
+      <!-- Canvas -->
+      <canvas id="graphCanvas"></canvas>
+
+      <!-- Result card -->
+      <div class="result-card" id="resultCard" style="display:none">
+        <h4 id="resultTitle">Resultado A*</h4>
+        <div class="result-row"><span>Nós expandidos</span><span id="resNodes">—</span></div>
+        <div class="result-row"><span>Paragens</span><span id="resStops">—</span></div>
+        <div class="result-row"><span>Distância</span><span id="resDist">—</span></div>
+        <div class="result-row"><span>Heurística</span><span id="resHeuristic">—</span></div>
+        <div class="result-optimal" id="resOptimal" style="display:none">✓ Solução Ótima</div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+const _chip = document.getElementById("plateChip");
+if (_chip) { const _m = sessionStorage.getItem("matricula"); if (_m) { const _p = _m.split("-"); _chip.textContent = _p.length===3 ? _p.join(" · ") : _m; } }
+</script>
+<script src="/static/resultados.js"></script>
+</body>
+</html>

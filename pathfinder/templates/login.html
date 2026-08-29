@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PathFinder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/login.css"/>
+</head>
+<body>
+
+  <!-- LEFT -->
+  <div class="left">
+
+    <div class="logo">
+      <div class="iconLogo">🛣️</div>
+      <div class="logo-text">PathFinder</div>
+    </div>
+
+    <div class="heading">
+      <h1>Bem-vindo<br>ao sistema</h1>
+      <p>Para aceder, carregue uma imagem da matrícula do veículo. O OCR identificará automaticamente.</p>
+    </div>
+
+    <div class="upload-zone" id="dropZone">
+      <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp"/>
+      <div class="upload-icon">📷</div>
+      <p>Arraste a imagem aqui ou <a href="#">clique para selecionar</a></p>
+      <p class="formats">Formatos aceites: JPG · PNG · máx. 10 MB</p>
+    </div>
+
+    <div class="plate-box">
+      <div class="plate-check">
+        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      </div>
+      <div class="plate-number" id="plateNumber">AB · 12 · CD</div>
+      <div class="plate-badge">Reconhecido</div>
+    </div>
+
+    <div class="confidence">
+      <span class="confidence-label">Confiança OCR</span>
+      <div class="bar-track">
+        <div class="bar-fill" id="barFill"></div>
+      </div>
+      <span class="confidence-pct" id="pctLabel">94%</span>
+    </div>
+
+    <a href="/main/" style="text-decoration: none;" class="btn-enter">Entrar no sistema &nbsp;→</a>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+
+    <svg class="network-svg" viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60"  y1="120" x2="250" y2="350" stroke="white" stroke-width="1.5"/>
+      <line x1="250" y1="350" x2="440" y2="200" stroke="white" stroke-width="1.5"/>
+      <line x1="440" y1="200" x2="380" y2="500" stroke="white" stroke-width="1.5"/>
+      <line x1="250" y1="350" x2="380" y2="500" stroke="white" stroke-width="1.5"/>
+      <line x1="60"  y1="120" x2="440" y2="200" stroke="white" stroke-width="1"/>
+      <line x1="60"  y1="580" x2="250" y2="350" stroke="white" stroke-width="1"/>
+      <circle cx="60"  cy="120" r="5" fill="white" opacity="0.7"/>
+      <circle cx="440" cy="200" r="5" fill="white" opacity="0.7"/>
+      <circle cx="380" cy="500" r="5" fill="white" opacity="0.7"/>
+      <circle cx="60"  cy="580" r="5" fill="white" opacity="0.7"/>
+      <circle cx="250" cy="350" r="7" fill="white" opacity="0.5"/>
+    </svg>
+
+    <div class="app-card">
+      <div class="app-card-icon">🛣️</div>
+      <h2>PathFinder</h2>
+      <p>Procura inteligente de rotas entre cidades portuguesas</p>
+    </div>
+  </div>
+
+  <script src="/static/login.js"></script>
+</body>
+</html>

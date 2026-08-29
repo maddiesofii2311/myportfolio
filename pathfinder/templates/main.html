@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PathFinder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/main.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="iconLogo">🛣️</div>
+      <a href="/" style="text-decoration: none;"><span class="logo-text">PathFinder</span></a>
+      <div class="nav-divider"></div>
+      <span class="nav-title">Procura de Rota</span>
+    </div>
+    <div class="nav-right">
+      <div class="plate-chip" id="plateChip">AB · 12 · CD</div>
+    </div>
+  </nav>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="section-label">ROTA</div>
+
+      <div class="route-inputs">
+        <div class="route-row">
+          <div class="route-dot origin"></div>
+          <select id="selectOrigin" class="route-select">
+            <option value="Aveiro">Aveiro</option>
+            <option value="Beja">Beja</option>
+            <option value="Braga">Braga</option>
+            <option value="Bragança">Bragança</option>
+            <option value="C. Branco">C. Branco</option>
+            <option value="Coimbra">Coimbra</option>
+            <option value="Évora">Évora</option>
+            <option value="Faro">Faro</option>
+            <option value="Guarda">Guarda</option>
+            <option value="Leiria">Leiria</option>
+            <option value="Lisboa">Lisboa</option>
+            <option value="Portalegre">Portalegre</option>
+            <option value="Porto" selected>Porto</option>
+            <option value="Santarém">Santarém</option>
+            <option value="Setúbal">Setúbal</option>
+            <option value="V. Castelo">V. Castelo</option>
+            <option value="Vila Real">Vila Real</option>
+            <option value="Viseu">Viseu</option>
+          </select>
+        </div>
+
+        <div class="route-connector"></div>
+
+        <div class="route-row">
+          <div class="route-dot destination"></div>
+          <select id="selectDest" class="route-select">
+            <option value="Aveiro">Aveiro</option>
+            <option value="Beja">Beja</option>
+            <option value="Braga">Braga</option>
+            <option value="Bragança">Bragança</option>
+            <option value="C. Branco">C. Branco</option>
+            <option value="Coimbra">Coimbra</option>
+            <option value="Évora">Évora</option>
+            <option value="Faro" selected>Faro</option>
+            <option value="Guarda">Guarda</option>
+            <option value="Leiria">Leiria</option>
+            <option value="Lisboa">Lisboa</option>
+            <option value="Portalegre">Portalegre</option>
+            <option value="Porto">Porto</option>
+            <option value="Santarém">Santarém</option>
+            <option value="Setúbal">Setúbal</option>
+            <option value="V. Castelo">V. Castelo</option>
+            <option value="Vila Real">Vila Real</option>
+            <option value="Viseu">Viseu</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top:24px">ALGORITMO</div>
+
+      <div class="algo-list">
+        <label class="algo-card">
+          <input type="radio" name="algo" value="ucs"/>
+          <div class="algo-info">
+            <span class="algo-name">Custo Uniforme</span>
+            <span class="algo-type">Procura Cega</span>
+          </div>
+        </label>
+        <label class="algo-card">
+          <input type="radio" name="algo" value="dls"/>
+          <div class="algo-info">
+            <span class="algo-name">Profundidade Limitada</span>
+            <span class="algo-type">Procura Cega</span>
+          </div>
+        </label>
+        <label class="algo-card">
+          <input type="radio" name="algo" value="greedy"/>
+          <div class="algo-info">
+            <span class="algo-name">Sôfrega (Greedy)</span>
+            <span class="algo-type">Procura Heurística</span>
+          </div>
+        </label>
+        <label class="algo-card active">
+          <input type="radio" name="algo" value="astar" checked/>
+          <div class="algo-info">
+            <span class="algo-name">A* (A-Star)</span>
+            <span class="algo-type">Procura Heurística</span>
+          </div>
+        </label>
+      </div>
+
+      <button class="btn-search" id="btnSearch">
+        <span>▶</span> Iniciar Procura
+      </button>
+
+    </aside>
+
+    <!-- MAIN MAP AREA -->
+    <main class="map-area">
+      <div class="map-header">
+        <div>
+          <h2 class="map-title">Grafo de Cidades — Portugal</h2>
+          <p class="map-subtitle">18 cidades · 28 ligações</p>
+        </div>
+        <div class="status-badge" id="statusBadge">A seleccionar rota...</div>
+      </div>
+
+      <canvas id="graphCanvas"></canvas>
+
+      <div class="legend">
+        <div class="legend-item"><span class="legend-dot" style="background:#27ae60"></span> Origem (<span id="legendOrigin">Porto</span>)</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#2980b9"></span> Destino (<span id="legendDest">Faro</span>)</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#e67e22"></span> Ponto intermédio</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#bdc3c7"></span> Cidade</div>
+      </div>
+    </main>
+
+  </div>
+  <script>
+const _chip = document.getElementById("plateChip");
+if (_chip) { const _m = sessionStorage.getItem("matricula"); if (_m) { const _p = _m.split("-"); _chip.textContent = _p.length===3 ? _p.join(" · ") : _m; } }
+</script>
+  <script src="/static/main.js"></script>
+</body>
+</html>
