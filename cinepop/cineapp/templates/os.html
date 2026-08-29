@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CinePop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="apple-touch-icon" sizes="180x180" href={% static "/images/apple-touch-icon.png" %}>
+		<link rel="icon" type="image/png" sizes="32x32" href={% static "/images/favicon-32x32.png" %}>
+		<link rel="icon" type="image/png" sizes="16x16" href={% static "/images/favicon-16x16.png" %}>
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<noscript><link rel="stylesheet" href={% static "assets/css/noscript.css" %} /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<a href={% url "index" %} class="logo" style="color: black">CinePop</a>
+					</header>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href={% url "index" %} >Filmes</a></li>
+							<li><a href={% url "generic" %} >Bar</a></li>
+							<li><a href={% static "check" %} >Comprar Bilhetes e Comida</a></li>
+							<li><a href={% url "login" %} >Login</a></li>
+							<li><a href={% url "registar" %} >Registar</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<div class="image main"><img src={% static "images/os.jpg" %} alt="" /></div>
+									<a href="https://www.youtube.com/watch?v=hFdfjeg8pXk" ><i>Ver Trailer</i></a>
+								</header>
+								<h3 align="center">O SOBREVIVENTE</h3>
+								<p>M16</p>
+								<p><b>Género:</b> Drama</p>
+								<p><b>Título Original:</b> The Survivor</p>
+								<p><b>Realizador:</b> Barry Levinson</p>
+								<p><b>Atores:</b> Ben Foster, Billy Magnussen, Vicky Krieps</p>
+								<p><b>Distribuidora:</b> Cinemundo</p>
+								<p><b>País:</b> Canadá, EUA, Hungria</p>
+								<p><b>Ano:</b> 2021</p>
+								<p><b>Duração (minutos):</b> 129</p>
+								<br>
+								<hr>
+								<h4><b>Sinopse:</b></h4>
+								<p>O filme é baseado na verdadeira história de Harry Haft, cujo amor por uma mulher o levou a sobreviver aos horrores inimagináveis de um campo de concentração nazi. Enquanto está preso, um agente da SS força Harry a lutar até a morte com outros prisioneiros em violentas batalhas de boxe que evocam duelos de gladiadores. Após conseguir finalmente escapar, Harry chega a Nova Iorque. Perseguido pelas suas memórias e o sufocante sentimento de culpa por ter sobrevivido, Haft volta aos duelos de boxe numa tentativa de que a mulher que o ama reconheça o seu nome e o possa voltar a encontrar. É aí que tem de confrontar Rocky Marciano.</p>
+								<hr>
+								<h4>Horário</h4><br>
+								<p><b style="color: red">Sala 4</b></p>
+								<p>15h40 | 18h40 | 21h30</p>
+								<hr>
+								<ul class="actions special">
+									<li><a href={% url "index" %} class="button large">Voltar</a></li>
+								</ul>
+							</section>
+					</div>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li style="color: darkblue">&copy; COPYRIGHT BY</li><li style="color: darkblue">SOFIA SILVA  |  ANDREZZA NOGUEIRA  |  FLORINDA TOMÉ</li></ul>
+					</div>
+			</div>
+		<!-- Scripts -->
+			<script src={% static "assets/js/jquery.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrollex.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrolly.min.js" %} ></script>
+			<script src={% static "assets/js/browser.min.js" %} ></script>
+			<script src={% static "assets/js/breakpoints.min.js" %} ></script>
+			<script src={% static "assets/js/util.js" %} ></script>
+			<script src={% static "assets/js/main.js" %} ></script>
+	</body>
+</html>

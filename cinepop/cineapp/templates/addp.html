@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CinePop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="apple-touch-icon" sizes="180x180" href={% static "/images/apple-touch-icon.png" %}>
+		<link rel="icon" type="image/png" sizes="32x32" href={% static "/images/favicon-32x32.png" %}>
+		<link rel="icon" type="image/png" sizes="16x16" href={% static "/images/favicon-16x16.png" %}>
+		<noscript><link rel="stylesheet" href={% static "assets/css/noscript.css" %}/></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<a href={% url "peliculas" %} class="logo" style="color: black">CinePop</a>
+					</header>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href={% url "peliculas" %} >Filmes</a></li>
+							<li><a href={% url "generic" %} >Bar</a></li>
+							<li><a href={% static "check" %} >Comprar Bilhetes e Comida</a></li>
+							<li><a href={% url "login" %} >Login</a></li>
+							<li><a href={% url "registar" %} >Registar</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<div class="image main"><img src={% static "images/addp.jpg" %}  alt="" /></div>
+									<a href="https://www.youtube.com/watch?v=ycpH2Tl4C8A"><i>Ver Trailer</i></a>
+								</header>
+								<h3 align="center">AFTER - DEPOIS DA PROMESSA</h3>
+								<p>M14</p>
+								<p><b>Género:</b> Drama, Romance</p>
+								<p><b>Título Original:</b> After Ever Happy</p>
+								<p><b>Realizador:</b> Castille Landon</p>
+								<p><b>Atores:</b> Josephine Langford, Hero Fiennes-Tiffin, Louise Lombard</p>
+								<p><b>Distribuidora:</b> Cinemundo</p>
+								<p><b>País:</b> EUA</p>
+								<p><b>Ano:</b> 2022</p>
+								<p><b>Duração (minutos):</b> 95</p>
+								<br>
+								<hr>
+								<h4><b>Sinopse:</b></h4>
+								<p>O quarto filme da saga “After” começa onde o último filme terminou, com o casamento da mãe de Hardin em Londres. Enquanto Hardin fica para trás a conectar-se com o seu passado, Tessa volta para Seattle. Já em casa, sofre uma tragédia que a obriga a tomar decisões difíceis e que vai alterar a sua vida para sempre. Hardin quer muito ajudar Tessa, mas está tão preso a lutar contra os seus demónios que acaba por afastá-la. A descoberta sobre o seu pai acaba por abalar a sua fachada impenetrável, e Tessa não sabe se conseguirá salvá-lo sem se sacrificar… Tessa encontra apoio para estes momentos difíceis em amigos como Landon, e apercebe-se que para continuar em frente terá de lutar por si própria.</p>
+								<hr>
+								<h4>Horário</h4><br>
+								<p><b style="color: red">Sala 8</b></p>
+								<p>10h40 | 13h30 | 23h50</p>
+								<hr>
+								<ul class="actions special">
+									<li><a href={% url "peliculas" %} class="button large">Voltar</a></li>
+								</ul>
+							</section>
+					</div>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li style="color: darkblue">&copy; COPYRIGHT BY</li><li style="color: darkblue">SOFIA SILVA  |  ANDREZZA NOGUEIRA  |  FLORINDA TOMÉ</li></ul>
+					</div>
+			</div>
+		<!-- Scripts -->
+			<script src={% static 
+				"assets/js/jquery.min.js" %} ></script>
+			<script src={% static 
+				"assets/js/jquery.scrollex.min.js" %} ></script>
+			<script src={% static 
+				"assets/js/jquery.scrolly.min.js" %} ></script>
+			<script src={% static 
+				"assets/js/browser.min.js" %} ></script>
+			<script src={% static 
+				"assets/js/breakpoints.min.js" %} ></script>
+			<script src={% static 
+				"assets/js/util.js" %} ></script>
+			<script src={% static 
+				"assets/js/main.js" %} ></script>
+	</body>
+</html>

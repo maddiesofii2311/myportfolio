@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CinePop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="apple-touch-icon" sizes="180x180" href={% static "/images/apple-touch-icon.png" %}>
+		<link rel="icon" type="image/png" sizes="32x32" href={% static "/images/favicon-32x32.png" %}>
+		<link rel="icon" type="image/png" sizes="16x16" href={% static "/images/favicon-16x16.png" %}>
+		<noscript><link rel="stylesheet" href={% static "assets/css/noscript.css" %} /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+				<div id="wrapper" class="fade-in">
+				<!-- Intro -->
+					<div id="intro">
+						<img src={% static "images/logo.png" %} alt="" />
+						<p class="sombra"><b style="color: darkblue">Todos os produtos que temos em disposição para ti no nosso bar!</b></p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly"></a></li>
+						</ul>
+					</div>
+				<!-- Header -->
+					<header id="header">
+						<a href={% url "index" %} class="logo" style="color: black">CINEPOP</a>
+					</header>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href={% url "index" %}>Filmes</a></li>
+							<li class="active"><a href={% url "generic" %}>Bar</a></li>
+							<li><a href={% static "check" %}>Comprar Bilhetes e Comida</a></li>
+							<li><a href={% url "login" %}>Login</a></li>
+							<li><a href={% url "registar" %}>Registar</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Posts -->
+							<section class="posts">
+								<article>
+									<header class="major">
+									<img src={% static "images/pipocas.png" %} alt="" height="100px" />
+									<h3>Pipocas</h3>
+									<p>Pequenas, Médias ou Grandes</p>
+									<p>Doces, Salgadas ou Mistas</p>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/sumol.png" %} alt="" height="100px" />
+									<h3>Sumol</h3>
+									<p>Bebida Pequena(0,5l), Média(0,75l) ou Grande(1l)</p>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/pepsilimao.png" %} alt="" height="100px" />
+									<h3>Pepsi Limão</h3>
+									<p>Bebida Pequena(0,5l), Média(0,75l) ou Grande(1l)</p>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/pepsi.png" %} alt="" height="100px" />
+									<h3>Pepsi</h3>
+									<p>Bebida Pequena(0,5l), Média(0,75l) ou Grande(1l)</p>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/7up.png" %} alt="" height="100px" />
+									<h3>7up</h3>
+									<p>Bebida Pequena(0,5l), Média(0,75l) ou Grande(1l)</p>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/guarana.png" %} alt="" height="100px" />
+									<h3>Guaraná</h3>
+									<p>Bebida Pequena(0,5l), Média(0,75l) ou Grande(1l)</p>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/liptonlimao.png" %} alt="" height="100px" />
+									<h3>Lipton Limão</h3>
+									<p>Bebida Pequena(0,5l), Média(0,75l) ou Grande(1l)</p>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/compalpessego.png" %} alt="" height="100px" />
+									<h3>Compal Pêssego</h3>
+								</header>
+								</article>
+							</section>
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
+									<!--<a href="#" class="previous">Prev</a>-->
+									<a href={% url "generic" %} class="page active">1</a>
+									<a href={% url "comida" %} class="page">2</a>
+									<a href={% url "food" %} class="page">3</a>
+									<a href={% url "bar" %} class="page">4</a>
+									<a href={% url "comida" %}class="next">Próximo</a>
+								</div>
+							</footer>
+						</div>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li style="color: darkblue">&copy; COPYRIGHT BY</li><li style="color: darkblue">SOFIA SILVA  |  ANDREZZA NOGUEIRA  |  FLORINDA TOMÉ</li></ul>
+					</div>
+		<!-- Scripts -->
+			<script src={% static "assets/js/jquery.min.js" %}></script>
+			<script src={% static "assets/js/jquery.scrollex.min.js" %}></script>
+			<script src={% static "assets/js/jquery.scrolly.min.js" %}></script>
+			<script src={% static "assets/js/browser.min.js" %}></script>
+			<script src={% static "assets/js/breakpoints.min.js" %}></script>
+			<script src={% static "assets/js/util.js" %}></script>
+			<script src={% static "assets/js/main.js" %}></script>
+	</body>
+</html>

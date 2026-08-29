@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CinePop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static"assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="apple-touch-icon" sizes="180x180" href={% static "/images/apple-touch-icon.png" %}>
+		<link rel="icon" type="image/png" sizes="32x32" href={% static "/images/favicon-32x32.png" %}>
+		<link rel="icon" type="image/png" sizes="16x16" href={% static "/images/favicon-16x16.png" %}>
+		<noscript><link rel="stylesheet" href={% static"assets/css/noscript.css" %} /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+				<!-- Intro -->
+					<div id="intro">
+						<img src={% static"images/logo.png" %} alt="" />
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly"></a></li>
+						</ul>
+					</div>
+				<!-- Header -->
+					<header id="header">
+						<!-- Para funcionar o círculo com a seta -->
+					</header>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href={% url "index" %} >Filmes</a></li>
+							<li><a href={% url "generic" %} >Bar</a></li>
+							<li class="active"><a href={% url "check" %} >Comprar Bilhetes e Comida</a></li>
+							<li><a href={% url "login" %} >Login</a></li>
+							<li><a href={% url "registar" %} >Registar</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Posts -->
+							<h3 align="center">Compra Finalizada com sucesso</h3>
+							<section class="posts">
+								<br><br><br>
+									<h1 align="center">#xxx</h1>
+									<p>A sua compra foi efetuada com sucesso, é o número <b>#xxx</b>. Indique abaixo o seu email para podermos enviar o comprovativo de fatura e de seguida clique em <b>Submeter</b> e por último <b>Continuar</b>. <b>Por favor mostre no dia ao funcionário.</b></p>
+									<form method="post" action="#">
+										<div class="row gtr-uniform">
+											<div class="col-6 col-12-xsmall">
+												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Email" />
+											</div>
+										</div>
+									</form>
+								</section>
+								<ul class="actions">
+									<li><input type="submit" value="Submeter" /></li>
+									<li><a href={% url "index" %} class="button" style="color: black">Continuar</a><li>
+								</ul>
+									</div>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li style="color: darkblue">&copy; COPYRIGHT BY</li><li style="color: darkblue">SOFIA SILVA  |  ANDREZZA NOGUEIRA  |  FLORINDA TOMÉ</li></ul>
+					</div>
+		<!-- Scripts -->
+			<script src={% static "assets/js/jquery.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrollex.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrolly.min.js" %} ></script>
+			<script src={% static "assets/js/browser.min.js" %} ></script>
+			<script src={% static "assets/js/breakpoints.min.js" %} ></script>
+			<script src={% static "assets/js/util.js" %} ></script>
+			<script src={% static "assets/js/main.js" %} ></script>
+	</body>
+</html>

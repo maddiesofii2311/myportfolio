@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CinePop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="apple-touch-icon" sizes="180x180" href={% static "/images/apple-touch-icon.png" %}>
+		<link rel="icon" type="image/png" sizes="32x32" href={% static "/images/favicon-32x32.png" %}>
+		<link rel="icon" type="image/png" sizes="16x16" href={% static "/images/favicon-16x16.png" %}>
+		<noscript><link rel="stylesheet" href={% static "assets/css/noscript.css" %} /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<a href={% url "index" %} class="logo" style="color: black">CinePop</a>
+					</header>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href={% url "index" %} >Filmes</a></li>
+							<li><a href={% url "generic" %} >Bar</a></li>
+							<li><a href={% static "check" %} >Comprar Bilhetes e Comida</a></li>
+							<li><a href={% url "login" %} >Login</a></li>
+							<li><a href={% url "registar" %} >Registar</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<div class="image main"><img src={% static "images/afdl.jpg" %} alt="" /></div>
+									<a href="https://www.youtube.com/watch?v=tskf3pMjf-w"><i>Ver Trailer</i></a>
+								</header>
+								<h3 align="center">A FADA DO LAR</h3>
+								<p>M14</p>
+								<p><b>Género:</b> Comédia</p>
+								<p><b>Título Original:</b> A Fada do Lar</p>
+								<p><b>Realizador:</b> João Maia</p>
+								<p><b>Atores:</b> Joana Metrass, Dalila Carmo, Manuel Cavaco</p>
+								<p><b>Distribuidora:</b> NOS Audiovisuais</p>
+								<p><b>País:</b> Portugal</p>
+								<p><b>Ano:</b> 2022</p>
+								<p><b>Duração (minutos):</b> 103</p>
+								<br>
+								<hr>
+								<h4><b>Sinopse:</b></h4>
+								<p>Vera, mãe solteira com dois filhos pequenos, é obrigada a ter dois trabalhos para sobreviver depois do pai dos seus filhos ter desaparecido em parte incerta. De dia é caixa num supermercado e à noite trabalha numa boîtede striptease, procurando assim não só criar os filhos como pagar as dívidas que o seu ex-companheiro lhe deixou. Assediada em ambos os trabalhos, um dia reage violentamente quando um cliente da boîte é mais atrevido, sendo condenada em tribunal a cumprir serviço comunitário num lar de idosos, onde a sua irreverência e juventude irá chocar com a autoritarismo e desumanidade da diretora. Para os idosos que vivem no lar, Vera é uma lufada de ar fresco que pouco e pouco irá mudar as suas vidas, transformando-se na verdadeira fada do lar...</p>
+								<hr>
+								<h4>Horário</h4><br>
+								<p><b style="color: red">Sala 6</b></p>
+								<p>15h40 | 18h40 | 21h30</p>
+								<hr>
+								<ul class="actions special">
+									<li><a href={% url "index" %} class="button large">Voltar</a></li>
+								</ul>
+							</section>
+					</div>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li style="color: darkblue">&copy; COPYRIGHT BY</li><li style="color: darkblue">SOFIA SILVA  |  ANDREZZA NOGUEIRA  |  FLORINDA TOMÉ</li></ul>
+					</div>
+			</div>
+		<!-- Scripts -->
+			<script src={% static "assets/js/jquery.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrollex.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrolly.min.js" %} ></script>
+			<script src={% static "assets/js/browser.min.js" %} ></script>
+			<script src={% static "assets/js/breakpoints.min.js" %} ></script>
+			<script src={% static "assets/js/util.js" %} ></script>
+			<script src={% static "assets/js/main.js" %} ></script>
+	</body>
+</html>

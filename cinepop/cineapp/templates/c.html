@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CinePop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="apple-touch-icon" sizes="180x180" href={% static "/images/apple-touch-icon.png" %}>
+		<link rel="icon" type="image/png" sizes="32x32" href={% static "/images/favicon-32x32.png" %}>
+		<link rel="icon" type="image/png" sizes="16x16" href={% static "/images/favicon-16x16.png" %}>
+		<noscript><link rel="stylesheet" href={% static "assets/css/noscript.css" %} /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<a href={% url "index" %} class="logo" style="color: black">CinePop</a>
+					</header>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href={% url "index" %} >Filmes</a></li>
+							<li><a href={% url "generic" %} >Bar</a></li>
+							<li><a href={% static "check" %} >Comprar Bilhetes e Comida</a></li>
+							<li><a href={% url "login" %} >Login</a></li>
+							<li><a href={% url "registar" %} >Registar</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<div class="image main"><img src={% static "images/c.jpg" %} alt="" /></div>
+									<a href="https://www.youtube.com/watch?v=TtzLvhRnTV8">
+									</iframe><i>Ver Trailer</i></a>
+								</header>
+								<h3 align="center">CORTE!</h3>
+								<p>M12</p>
+								<p><b>Género:</b> Comédia</p>
+								<p><b>Título Original:</b> Final Cut</p>
+								<p><b>Realizador:</b> Michel Hazanavicius</p>
+								<p><b>Atores:</b> Romain Duris, Bérènice Bejo, Grégory Gadebois</p>
+								<p><b>Distribuidora:</b> NOS Audiovisuais</p>
+								<p><b>País:</b> França, Japão, Reino Unido</p>
+								<p><b>Ano:</b> 2022</p>
+								<p><b>Duração (minutos):</b> 112</p>
+								<br>
+								<hr>
+								<h4><b>Sinopse:</b></h4>
+								<p>Numa fábrica abandonada, um filme de terror “série Z” está em plena rodagem. Técnicos exaustos, atores desmotivados... apenas o realizador parece possuir a energia necessária para dar vida a este enésimo filme de zombies de baixo orçamento. Durante a preparação de uma cena difícil, a filmagem é perturbada pelo aparecimento dos verdadeiros mortos-vivos. Em frente da câmara, tudo parece mais ou menos normal. Atrás dela, a equipa faz de tudo para salvar o filme enquanto segue a sua única palavra de ordem: Não Cortar!</p>
+								<hr>
+								<h4>Horário</h4><br>
+								<p><b style="color: red">Sala 3</b></p>
+								<p>15h40 | 18h40 | 21h30</p>
+								<hr>
+								<ul class="actions special">
+									<li><a href={% url "index" %} class="button large">Voltar</a></li>
+								</ul>
+							</section>
+					</div>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li style="color: darkblue">&copy; COPYRIGHT BY</li><li style="color: darkblue">SOFIA SILVA  |  ANDREZZA NOGUEIRA  |  FLORINDA TOMÉ</li></ul>
+					</div>
+			</div>
+		<!-- Scripts -->
+			<script src={% static "assets/js/jquery.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrollex.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrolly.min.js" %} ></script>
+			<script src={% static "assets/js/browser.min.js" %} ></script>
+			<script src={% static "assets/js/breakpoints.min.js" %} ></script>
+			<script src={% static "assets/js/util.js" %} ></script>
+			<script src={% static "assets/js/main.js" %} ></script>
+	</body>
+</html>

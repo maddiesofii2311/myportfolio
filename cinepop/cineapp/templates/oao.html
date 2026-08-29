@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CinePop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="apple-touch-icon" sizes="180x180" href={% static "/images/apple-touch-icon.png" %}>
+		<link rel="icon" type="image/png" sizes="32x32" href={% static "/images/favicon-32x32.png" %}>
+		<link rel="icon" type="image/png" sizes="16x16" href={% static "/images/favicon-16x16.png" %}>
+		<noscript><link rel="stylesheet" href={% static "assets/css/noscript.css" %} /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<a href={% url "movies" %} class="logo" style="color: black">CinePop</a>
+					</header>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href={% url "movies" %} >Filmes</a></li>
+							<li><a href={% url "generic" %} >Bar</a></li>
+							<li><a href={% url "check" %} >Comprar Bilhetes e Comida</a></li>
+							<li><a href={% url "login" %} >Login</a></li>
+							<li><a href={% url "registar" %} >Registar</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Post -->
+							<section class="post">
+								 <header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<div class="image main"><img src={% static "images/oao.jpg" %} alt="" /></div>
+									<a href="https://www.youtube.com/watch?v=VD5SclPBiLA" ><i>Ver Trailer</i></a>
+								</header>
+								<h3 align="center">ORFÃ: A ORIGEM</h3>
+								<p>M16</p>
+								<p><b>Género:</b> Terror</p>
+								<p><b>Título Original:</b> Orphan: First Kill</p>
+								<p><b>Realizador:</b> William Brent Bell</p>
+								<p><b>Atores:</b> Isabelle Fuhrman, Julia Stiles, Rossif Sutherland</p>
+								<p><b>Distribuidora:</b> Cinemundo</p>
+								<p><b>País:</b> EUA</p>
+								<p><b>Ano:</b> 2022</p>
+								<p><b>Duração (minutos):</b> 99</p>
+								<br>
+								<hr>
+								<h4><b>Sinopse:</b></h4>
+								<p>A aterradora saga de Esther continua nesta emocionante prequela, "Órfã: A Origem". Depois de planear uma brilhante fuga de um hospital psiquiátrico na Estónia, Esther viaja até a América passando-se pela filha desaparecida de uma família milionária. No entanto, após uma inesperada reviravolta, a mãe começa a desconfiar da “criança” assassina, e tudo faz para proteger a sua família.</p>
+								<hr>
+								<h4>Horário</h4><br>
+								<p><b style="color: red">Sala 6</b></p>
+								<p>10h40 | 13h30 | 23h50</p>
+								<hr>
+								<ul class="actions special">
+									<li><a href={% url "movies" %} class="button large">Voltar</a></li>
+								</ul>
+							</section>
+					</div>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li style="color: darkblue">&copy; COPYRIGHT BY</li><li style="color: darkblue">SOFIA SILVA  |  ANDREZZA NOGUEIRA  |  FLORINDA TOMÉ</li></ul>
+					</div>
+			</div>
+		<!-- Scripts -->
+			<script src={% static "assets/js/jquery.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrollex.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrolly.min.js" %} ></script>
+			<script src={% static "assets/js/browser.min.js" %} ></script>
+			<script src={% static "assets/js/breakpoints.min.js" %} ></script>
+			<script src={% static "assets/js/util.js" %} ></script>
+			<script src={% static "assets/js/main.js" %} ></script>
+	</body>
+</html>

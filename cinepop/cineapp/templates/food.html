@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CinePop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="apple-touch-icon" sizes="180x180" href={% static "/images/apple-touch-icon.png" %}>
+		<link rel="icon" type="image/png" sizes="32x32" href={% static "/images/favicon-32x32.png" %}>
+		<link rel="icon" type="image/png" sizes="16x16" href={% static "/images/favicon-16x16.png" %}>
+		<noscript><link rel="stylesheet" href={% static "assets/css/noscript.css" %} /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+				<div id="wrapper" class="fade-in">
+				<!-- Intro -->
+					<div id="intro">
+						<img src={% static "images/logo.png" %} alt="" />
+						<p class="sombra"><b style="color: darkblue">Todos os produtos que temos em disposição para ti no nosso bar!</b></p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly"></a></li>
+						</ul>
+					</div>
+				<!-- Header -->
+					<header id="header">
+						<a href={% url "index" %} class="logo" style="color: black">CINEPOP</a>
+					</header>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href={% url "index" %} >Filmes</a></li>
+							<li class="active"><a href={% url "generic" %} >Bar</a></li>
+							<li><a href={% static "check" %} >Comprar Bilhetes e Comida</a></li>
+							<li><a href={% url "login" %} >Login</a></li>
+							<li><a href={% url "registar" %} >Registar</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Posts -->
+							<section class="posts">
+								<article>
+									<header class="major">
+									<img src={% static "images/m&mcastanho.jpg" %} alt="" height="100px" />
+									<h3>M&M's Castanho</h3>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/m&mazul.png" %} alt="" height="100px" />
+									<h3>M&M's Azul</h3>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/kitkat.png" %} alt="" height="100px" />
+									<h3>KitKat</h3>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/twix.png" %} alt="" height="100px" />
+									<h3>Twix</h3>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/snickers.png" %} alt="" height="100px" />
+									<h3>Snickers</h3>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/mars.png" %} alt="" height="100px" />
+									<h3>Mars</h3>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/maltesers.png" %} alt="" height="100px" />
+									<h3>Maltesers</h3>
+								</header>
+								</article>
+								<article>
+									<header class="major">
+									<img src={% static "images/bounty.png" %} alt="" height="100px" />
+									<h3>Bounty</h3>
+								</header>
+								</article>
+							</section>
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
+									<a href={% url "comida" %} class="previous">Anterior</a>
+									<a href={% url "generic" %} class="page">1</a>
+									<a href={% url "comida" %} class="page">2</a>
+									<a href={% url "food" %} class="page active">3</a>
+									<a href={% url "bar" %} class="page">4</a>
+									<a href={% url "bar" %} class="next">Próximo</a>
+								</div>
+							</footer>
+						</div>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li style="color: darkblue">&copy; COPYRIGHT BY</li><li style="color: darkblue">SOFIA SILVA  |  ANDREZZA NOGUEIRA  |  FLORINDA TOMÉ</li></ul>
+					</div>
+		<!-- Scripts -->
+			<script src={% static "assets/js/jquery.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrollex.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrolly.min.js" %} ></script>
+			<script src={% static "assets/js/browser.min.js" %} ></script>
+			<script src={% static "assets/js/breakpoints.min.js" %} ></script>
+			<script src={% static "assets/js/util.js" %} ></script>
+			<script src={% static "assets/js/main.js" %} ></script>
+	</body>
+</html>

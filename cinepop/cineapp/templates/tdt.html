@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CinePop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="apple-touch-icon" sizes="180x180" href={% static "/images/apple-touch-icon.png" %}>
+		<link rel="icon" type="image/png" sizes="32x32" href={% static "/images/favicon-32x32.png" %}>
+		<link rel="icon" type="image/png" sizes="16x16" href={% static "/images/favicon-16x16.png" %}>
+		<noscript><link rel="stylesheet" href={% static "assets/css/noscript.css" %} /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<a href={% url "filmes" %} class="logo" style="color: black">CinePop</a>
+					</header>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href={% url "filmes" %} >Filmes</a></li>
+							<li><a href={% url "generic" %} >Bar</a></li>
+							<li><a href={% url "check" %} >Comprar Bilhetes e Comida</a></li>
+							<li><a href={% url "login" %} >Login</a></li>
+							<li><a href={% url "registar" %} >Registar</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Post -->
+							<section class="post">
+								 <header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<div class="image main"><img src={% static "images/tdt.jpg" %} alt="" /></div>
+									<a href="https://www.youtube.com/watch?v=dt05a47_oiQ" ><i>Ver Trailer</i></a>
+								</header>
+								<h3 align="center">TRIÂNGULO DA TRISTEZA</h3>
+								<p>M12</p>
+								<p><b>Género:</b> Drama</p>
+								<p><b>Título Original:</b> Triangle of Sadness</p>
+								<p><b>Realizador:</b> Ruben Östlund</p>
+								<p><b>Atores:</b> Harris Dickinson, Charlbi Dean, Woody Harrelson</p>
+								<p><b>Distribuidora:</b> Alambique</p>
+								<p><b>País:</b> Suécia, Alemanha, França, Dinamarca</p>
+								<p><b>Ano:</b> 2022</p>
+								<p><b>Duração (minutos):</b> 149</p>
+								<br>
+								<hr>
+								<h4><b>Sinopse:</b></h4>
+								<p>Uma sátira desinibida em que se assiste a uma inversão de papéis e classes e onde se revela o sórdido valor comercial da beleza. Os modelos Carl e Yaya movimentam-se no mundo da moda, enquanto exploram os limites da sua relação. O casal é convidado para fazer um cruzeiro luxuoso na companhia de um conjunto de “infames” passageiros riquíssimos, um oligarca russo, um traficante de armas inglês e um capitão idiossincrático e alcoólico, dado a citações de Marx. Parece o cenário perfeito para muitas publicações de Instagram. Mas durante o esmeradíssimo Jantar do Comandante, uma tempestade avoluma-se e os passageiros sofrem um intenso enjoo...</p>
+								<hr>
+								<h4>Horário</h4><br>
+								<p><b style="color: red">Sala 11</b></p>
+								<p>15h40 | 18h40 | 21h30</p>
+								<hr>
+								<ul class="actions special">
+									<li><a href={% url "filmes" %} class="button large">Voltar</a></li>
+								</ul>
+							</section>
+					</div>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li style="color: darkblue">&copy; COPYRIGHT BY</li><li style="color: darkblue">SOFIA SILVA  |  ANDREZZA NOGUEIRA  |  FLORINDA TOMÉ</li></ul>
+					</div>
+			</div>
+		<!-- Scripts -->
+			<script src={% static "assets/js/jquery.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrollex.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrolly.min.js" %} ></script>
+			<script src={% static "assets/js/browser.min.js" %} ></script>
+			<script src={% static "assets/js/breakpoints.min.js" %} ></script>
+			<script src={% static "assets/js/util.js" %} ></script>
+			<script src={% static "assets/js/main.js" %} ></script>
+	</body>
+</html>

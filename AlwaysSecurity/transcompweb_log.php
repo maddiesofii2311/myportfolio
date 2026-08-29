@@ -1,0 +1,142 @@
+<?php include "valida_session.php"; 
+
+$login=$_SESSION["login"];
+//echo "</BR>";
+
+	$ligax = mysqli_connect('localhost','root','');
+	if(!$ligax) {echo '<p> Falha na Ligação.';exit;}
+
+	mysqli_select_db($ligax,'asecurity_bd');
+
+	$consulta = "select * from UTILIZADORES WHERE login='".$login."'";
+	$result = mysqli_query($ligax, $consulta);
+
+	$nregistos = mysqli_num_rows($result);
+	//echo 'Nº de registos encontrados:'.$nregistos;
+
+	$registo = mysqli_fetch_assoc($result);
+
+	$tipo_ut= $registo['tipo_ut'];
+	
+	
+		//echo 'tipo de utilizador:'.$tipo;
+		//echo"</BR>";
+		//echo"Bem vindo ao sistema";
+		
+		
+	if($tipo_ut=="adm") header("Location: adm_pagina_principal.php");
+
+?>
+
+<!DOCTYPE HTML>
+<html lang="pt-pt">
+	<head>
+		<title>Always Security</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+	<iframe src="imagens/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+
+	<audio  autoplay="autoplay" loop preload="preload">
+		<source src="imagens/musica.wav" type="audio/wav">
+	</audio>
+	
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="pagina_principal.php">Always Security</a></h1>
+						<p align="center" style="color:Yellow; font-weight: bolder;"><?php echo "Olá ".$login."!"; ?></p>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>Menu</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="pagina_principal.php">Início</a></li>
+											<li><a href="definicaosi_log.php">O que é Segurança na Internet</a></li>
+											<li><a href="sredeswifi_log.php">Segurança Redes Wi-Fi</a></li>
+											<li><a href="navegars_log.php">Navegue em Segurança</a></li>
+											<li><a href="problemasi_log.php">Problemas existentes na Internet</a></li>
+											<li><a href="redessociaiss_log.php">Redes Sociais - Utilizar de forma Segura</a></li>
+											<li><a href="protmenores_log.php">Proteção de menores de idade</a></li>
+											<li><a href="expveridicas_log.php">Experiências Verídicas</a></li>
+											<li><a href="stuestac_log.php">Estatísticas - Estudo a jovens entre os 12 e 15 anos</a></li>
+											<li><a href="forum_topicos.php">Fórum - Partilha a tua experiência, conhecimento e dúvidas aqui!</a></li>
+											<li><a href="zona_jogo.php">Vamos Jogar! - Quanto sabes sobre segurança na internet?</a></li>
+											<li><a href="logout.php">Sair</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<article id="main">
+						<header>
+							<h2><u>Transferências Financeiras e Compras Online</u></h2>
+							<p align="center"><a href="#dest1"><b>Transferências Financeiras Seguras pela Internet</b></p>
+							<p align="center"><a href="#dest2"><b>Compras Online em Segurança</b></p>
+							<p><b>Abrir &#8595;</b></p> 
+							    <ul class="actions special">
+								<li><a href="https://www.youtube.com/channel/UCDoF9llATdrvYd0LiTs1Nxg"><img src="imagens/youtube.png" width="100px" height="100px"></a></li>
+						</header>
+						<a name="dest1"></a>
+						<section class="wrapper style5">
+							<div class="inner">
+
+								<h4 style="color:Green;">Transferências Financeiras Seguras pela Internet</h4>
+								<p style="color:Blue;" align="justify">Com o avanço dos tempos, a tecnologia começou a ser usada para tudo, como fazer transferência de dinheiro através do site de um banco por exemplo. Muitas pessoas preferem tratar das suas situações com bancos online pois não necessitam de sair de casa. Para além de ser útil, deve se ter imenso cuidado pois algum criminoso poderá aceder a uma conta de um banco. Para evitar problemas, deve ter sempre senhas seguras. Para não ser vítima de “Engenharia Social”, Phising, Key Logger ou Vishing deve evitar ao máximo tratar de assuntos financeiros online. Contudo, no caso de não conseguir arranjar maneira de tratar de situações do banco pessoalmente, deve ter em atenção, no caso de receber emails ou mensagens, ver se o email/número corresponde ao do banco. No caso de dúvida, deve ligar para o banco para confirmar a mensagem e no caso de o banco não ter conhecimento, deve imediatamente fazer queixa na polícia, pois é crime. Deve sempre ter um antivírus no seu equipamento atualizado para não permitir o acesso de criminosos para roubo de informação confidencial.</p>
+
+								<p align="center"><img src="imagens/transbancweb.jpg"></p>
+
+								<a name="dest2"></a>
+								<hr />
+
+								<h4 style="color:Green;">Compras Online em Segurança</h4>
+								<p style="color:Blue;" align="justify">Um utilizador que faça compras a partir da internet deve saber que existem riscos quando as faz quanto à confiança do website/vendedor, aos métodos de pagamento e aos seus direitos de consumidor. Assim sendo, deve ter em atenção:</p>
+								<ul>
+									<li style="color:Blue;" align="justify"><b>Identificação de websites seguros de confiança</b> – Quando um utilizador pretende fazer uma compra online, deve ter atenção nos procedimentos de segurança incorporados no website, como os certificados SSL (Secure Socket Laver) que permitem a encriptação dos dados entre o website e o servidor, links com o protocolo “HTTPS” (o mesmo mantem o website seguro) e realizar compras apenas em redes Wi-Fi seguras. No caso de o website onde pretende fazer a compra possuir o sistema 3D secure (sistema onde permite receber uma mensagem no seu telemóvel para a autorização da compra), o mesmo confirmará uma segurança adicional para a confiabilidade da sua compra. Se mesmo assim tiver dúvidas quando ao site, poderá sempre pesquisar pelo mesmo na internet para observar o feedback do mesmo;</li>
+									<li style="color:Blue;" align="justify"><b>Métodos seguros de pagamento</b> – A forma mais aconselhável de fazer um pagamento online é através de cartões de crédito pré-pagos pois os mesmos apenas permitem um “x” valor de dinheiro no mesmo, Paypal pois no caso de problema o mesmo reembolsa o seu dinheiro, SafeCard e MBNET/MBWAY. Se utilizar o “Envio à Cobrança” pelos CTT, é uma prova de pagamento pelo produto em boas condições;</li>
+									<li style="color:Blue;" align="justify"><b>Direitos do consumidor em compras online</b> – As lojas pertencentes ao espaço Europeu são mais seguras por os direitos do consumidor estarem assegurados. No espaço Europeu existem imensas regras que protegem o consumidor, como por exemplo o direito à devolução do produto num prazo de 14 dias ou a possibilidade de reclamação por uma encomenda atrasada. Estes direitos permitem também a apresentação de queixa por situações de fraude.</li>
+								</ul>
+
+								<p align="center"><img src="imagens/compweb.jpg"></p>
+
+								
+							</div>
+						</section>
+					</article>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="icons">
+							<li><a href="https://instagram.com/maddiie_2311?igshid=6ly2p0yxyaq2" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="mailto:maddiesofii2311@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+							<li><a href="https://www.youtube.com/channel/UCDoF9llATdrvYd0LiTs1Nxg" class="icon brands fa-youtube"><span class="label">Youtube</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; Copyright <script type="text/javascript">document.write(new Date().getFullYear());
+							</script> | by <a href="https://instagram.com/maddiie_2311?igshid=6ly2p0yxyaq2">Sofia Silva</a></li>
+						</ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

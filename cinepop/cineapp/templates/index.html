@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CinePop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="apple-touch-icon" sizes="180x180" href={% static "/images/apple-touch-icon.png" %}>
+		<link rel="icon" type="image/png" sizes="32x32" href={% static "/images/favicon-32x32.png" %}>
+		<link rel="icon" type="image/png" sizes="16x16" href={% static "/images/favicon-16x16.png" %}>
+		<noscript><link rel="stylesheet" href={% static "assets/css/noscript.css" %}/></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+				<!-- Intro -->
+					<div id="intro">
+						<img src={% static "images/logo.png" %} alt="" />
+						<p class="sombra"><b style="color: darkblue">Todos os filmes em estreia de momento no cinema de Aveiro onde pode comprar bilhetes e comida agora!</b></p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly"></a></li>
+						</ul>
+					</div>
+				<!-- Header -->
+					<header id="header">
+						<a href={% url "index" %} class="logo" style="color: black">CinePop</a>
+					</header>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href={% url "index" %}>Filmes</a></li>
+							<li><a href={% url "generic" %}>Bar</a></li>
+							<li><a href={% static "check" %}>Comprar Bilhetes e Comida</a></li>
+							<li><a href={% url "login" %}>Login</a></li>
+							<li><a href={% url "registar" %}>Registar</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<!-- Posts -->
+							<section class="posts">
+								<article>
+									<header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<a href={% url 'upenh' %} class="image main"><img src={% static "images/upenh.jpg" %} alt="" /></a>
+									<h3><a href={% url 'upenh' %}>UMA PASTELARIA EM NOTTING HILL</a></h3>
+								</header>
+								<ul class="actions special">
+									<li><a href={% url 'upenh' %} class="button large">Saber Mais</a></li>
+								</ul>
+								</article>
+								<article>
+									<header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<a href={% url "hof" %} class="image main"><img src={% static "images/hof.jpg" %} alt="" /></a>
+									<h3><a href={% url "hof" %}>HALLOWEEN O FINAL</a></h3>
+								</header>
+								<ul class="actions special">
+									<li><a href={% url "hof" %} class="button large">Saber Mais</a></li>
+								</ul>
+								</article>
+								<article>
+									<header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<a href={% url "c" %} class="image main"><img src={% static "images/c.jpg" %} alt="" /></a>
+									<h3><a href={% url "c" %}>CORTE!</a></h3>
+								</header>
+								<ul class="actions special">
+									<li><a href={% url "c" %} class="button large">Saber Mais</a></li>
+								</ul>
+								</article>
+								<article>
+									<header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<a href={% url "os" %} class="image main"><img src={% static "images/os.jpg" %} alt="" /></a>
+									<h3><a href={% url "os" %}>O SOBREVIVENTE</a></h3>
+								</header>
+								<ul class="actions special">
+									<li><a href={% url "os" %} class="button large">Saber Mais</a></li>
+								</ul>
+								</article>
+								<article>
+									<header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<a href={% url "amr" %} class="image main"><img src={% static "images/amr.jpg" %} alt="" /></a>
+									<h3><a href={% url "amr" %}>A MULHER REI</a></h3>
+								</header>
+								<ul class="actions special">
+									<li><a href={% url "amr" %} class="button large">Saber Mais</a></li>
+								</ul>
+								</article>
+								<article>
+									<header class="major">
+									<span class="date">Até 19 fevereiro 2023</span>
+									<a href={% url "afdl" %} class="image main"><img src={% static "images/afdl.jpg" %} alt="" /></a>
+									<h3><a href={% url "afdl" %}>A FADA DO LAR</a></h3>
+								</header>
+								<ul class="actions special">
+									<li><a href={% url "afdl" %} class="button large">Saber Mais</a></li>
+								</ul>
+								</article>
+							</section>
+						<!-- Footer -->
+							<footer>
+								<div class="pagination">
+									<!--<a href="#" class="previous">Prev</a>-->
+									<a href={% url "index" %} class="page active">1</a>
+									<a href={% url "filmes" %} class="page">2</a>
+									<a href={% url "movies" %} class="page">3</a>
+									<a href={% url "peliculas" %} class="page">4</a>
+									<a href={% url "filmes" %} class="next">Próximo</a>
+								</div>
+							</footer>
+					</div>
+				<!-- Copyright -->
+				<footer>
+					<div id="copyright">
+						<ul><li style="color: darkblue">&copy; COPYRIGHT BY</li><li style="color: darkblue">SOFIA SILVA  |  ANDREZZA NOGUEIRA  |  FLORINDA TOMÉ</li></ul>
+					</div>
+				</footer>
+			</div>
+		<!-- Scripts -->
+			<script src={% static "assets/js/jquery.min.js" %}></script>
+			<script src={% static "assets/js/jquery.scrollex.min.js" %}></script>
+			<script src={% static "assets/js/jquery.scrolly.min.js" %}></script>
+			<script src={% static "assets/js/browser.min.js" %}></script>
+			<script src={% static "assets/js/breakpoints.min.js" %}></script>
+			<script src={% static "assets/js/util.js" %}></script>
+			<script src={% static "assets/js/main.js" %}></script>
+	</body>
+</html>

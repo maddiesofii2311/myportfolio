@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CinePop</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="stylesheet" href={% static "assets/css/main.css" %} />
+		<link rel="apple-touch-icon" sizes="180x180" href={% static "/images/apple-touch-icon.png" %}>
+		<link rel="icon" type="image/png" sizes="32x32" href={% static "/images/favicon-32x32.png" %}>
+		<link rel="icon" type="image/png" sizes="16x16" href={% static "/images/favicon-16x16.png" %}>
+		<noscript><link rel="stylesheet" href={% static "assets/css/noscript.css" %} /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+				<!-- Intro -->
+					<div id="intro">
+						<img src={% static "images/logo.png" %} alt="" />
+						<p class="sombra"><b style="color: darkblue">DESEJA CANCELAR A COMPRA?</b></p>
+						<p class="sombra"><b><a href={% url "index" %} style="color: darkblue">Sim</a></b></p>
+						<p class="sombra"><b><a href="#header" style="color: darkblue">Não</a></b></p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly"></a></li>
+						</ul>
+					</div>
+				<!-- Header -->
+					<header id="header">
+						<!-- Para funcionar o círculo com a seta -->
+					</header>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href={% url "index" %} >Filmes</a></li>
+							<li><a href={% url "generic" %} >Bar</a></li>
+							<li class="active"><a href={% url "check" %} >Comprar Bilhetes e Comida</a></li>
+							<li><a href={% url "login" %} >Login</a></li>
+							<li><a href={% url "registar" %} >Registar</a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+					<div id="main">
+						<div id="main">
+						<!-- Posts -->
+							<h3 align="center">2º passo: Escolha o dia e a sessão</h3>
+							<section class="posts">
+									<header class="major">
+										<br>
+									<div class="table-wrapper">
+										<table class="alt" >
+											<thead>
+												<tr>
+													<th>Dia</th>
+													<th>Sessão</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Quarta-feira, 15 fevereiro 2023</td>
+													<td><a href={% url "precos" %} >15h40</a>, <a href={% url "precos" %} >18h40</a>, <a href={% url "precos" %} >21h30</a></td>
+												</tr>
+												<tr>
+													<td>Quinta-feira, 16 fevereiro 2023</td>
+													<td><a href={% url "precos" %} >15h40</a>, <a href={% url "precos" %} >18h40</a>, <a href={% url "precos" %} >21h30</a></td>
+												</tr>
+												<tr>
+													<td>Sexta-feira, 17 fevereiro 2023</td>
+													<td><a href={% url "precos" %} >15h40</a>, <a href={% url "precos" %} >18h40</a>, <a href={% url "precos" %} >21h30</a></td>
+												</tr>
+												<tr>
+													<td>Sábado, 18 fevereiro 2023</td>
+													<td><a href={% url "precos" %} >15h40</a>, <a href={% url "precos" %} >18h40</a>, <a href={% url "precos" %} >21h30</a></td>
+												</tr>
+												<tr>
+													<td>Domingo, 19 fevereiro 2023</td>
+													<td><a href={% url "precos" %} >15h40</a>, <a href={% url "precos" %} >18h40</a>, <a href={% url "precos" %} >21h30</a></td>
+												</tr>
+											</tbody>
+											<tfoot>
+										</table>
+									</div>
+								</header>
+							</section>
+					</div>
+					</div>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li style="color: darkblue">&copy; COPYRIGHT BY</li><li style="color: darkblue">SOFIA SILVA  |  ANDREZZA NOGUEIRA  |  FLORINDA TOMÉ</li></ul>
+					</div>
+		<!-- Scripts -->
+			<script src={% static "assets/js/jquery.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrollex.min.js" %} ></script>
+			<script src={% static "assets/js/jquery.scrolly.min.js" %} ></script>
+			<script src={% static "assets/js/browser.min.js" %} ></script>
+			<script src={% static "assets/js/breakpoints.min.js" %} ></script>
+			<script src={% static "assets/js/util.js" %} ></script>
+			<script src={% static "assets/js/main.js" %} ></script>
+	</body>
+</html>
