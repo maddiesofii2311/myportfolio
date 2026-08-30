@@ -81,16 +81,6 @@ export default function Projects() {
                     {t.projects.code}
                   </a>
                 )}
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="focus-ring text-text underline decoration-border underline-offset-4 transition-colors hover:text-mint hover:decoration-mint"
-                  >
-                    {t.projects.live}
-                  </a>
-                )}
                 {project.images && project.images.length > 0 && (
                   <button
                     type="button"
